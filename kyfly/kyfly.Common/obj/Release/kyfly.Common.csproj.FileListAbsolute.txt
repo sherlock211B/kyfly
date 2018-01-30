@@ -1,0 +1,7 @@
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Common\bin\Release\kyfly.Common.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Common\bin\Release\kyfly.Common.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Common\bin\Release\MySql.Data.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Common\obj\Release\kyfly.Common.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Common\obj\Release\kyfly.Common.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Common\bin\Release\NPinyin.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Common\bin\Release\NPinyin.pdb

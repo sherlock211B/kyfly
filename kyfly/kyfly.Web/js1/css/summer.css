@@ -1,0 +1,70 @@
+﻿.btabs {
+    border: 1px solid #8DB2E3;
+    font-size: 12px;
+    height: 26px;
+    list-style-type: none;
+    width: 100%;
+    background-color: #E0ECFF;
+}
+
+.tooltable{
+    width:100%;
+    margin-top:-5px;
+}
+
+a {
+    color: Black;
+    text-decoration: none;
+    font-size: 12px;
+    font-family: Tahoma,Verdana,微软雅黑,新宋体;
+}
+
+    a:hover {
+        color: Red;
+        text-decoration: underline;
+    }
+
+.validatebox-invalid {
+    border: solid 1px red;
+}
+
+.edit_table {
+    max-width: 100%;
+    background-color: #b5d6e6;
+    border: 1px solid #ddd;
+    border-collapse: separate;
+    height: 100px;
+    margin: 0 auto;
+}
+
+    .edit_table tr {
+        background-color: White;
+        height: 32px;
+    }
+
+    .edit_table th {
+        width: 150px;
+        text-align: center;
+    }
+
+    .edit_table td {
+        text-align: left;
+        padding: 5px;
+    }
+
+    .edit_table input {
+        border: 1px solid #8DB2E3;
+        width: 200px;
+        height: 20px;
+    }
+
+    .edit_table .radioView {
+        width: 20px;
+        height: 15px;
+    }
+
+    .edit_table .status_input input {
+        border: none;
+        width: auto;
+        height: auto;
+    }

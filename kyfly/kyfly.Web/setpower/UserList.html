@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    
+    <link href="../js1/Treetable_files/jqtreetable.css" rel="stylesheet" type="text/css" />
+    <link href="../js1/Css/default.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../js1/easyUI/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../js1/easyUI/themes/icon.css" />
+    <script type="text/javascript" src="../js1/easyUI/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js1/easyUI/jquery.easyui.min.js"></script>
+     <script type="text/javascript" src="../js1/btns.js"></script>
+    <script type="text/javascript" src="../js1/Treetable_files/jqtreetable.js"></script>
+    <script src="../js1/easyUI/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <link href="../css/default.css" rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript">
+        window.onload = windowHeight; //页面载入完毕执行函数
+        function windowHeight() {
+            var h = document.documentElement.clientHeight;
+            var bodyHeight = document.getElementById("content");
+            if (h < 598) {
+                h = 598;
+                bodyHeight.style.height = (h - 130) + "px";
+            }
+            else bodyHeight.style.height = (h - 130) + "px";
+        }
+        setInterval(windowHeight, 500)//每半秒执行一次windowHeight函数
+
+        //弹出信息窗口 title:标题 msgString:提示信息 msgType:信息类型 [error,info,question,warning]
+        function msgShow(title, msgString, msgType) {
+            $.messager.alert(title, msgString, msgType);
+        }
+        $(function () {
+            InitSearch();
+            $('#dd').dialog({
+                closed: true,
+                modal: true,
+                title: '分配角色'
+            });
+            $('#dd2').dialog({
+                closed: true,
+                modal: true,
+                title: '修改密码'
+            });
+            $('#dd3').dialog({
+                closed: true,
+                modal: true,
+                title: '个人信息'
+            });
+            $('#dd4').dialog({
+                closed: true,
+                modal: true,
+                title: '分配角色1'
+            });
+            $('#tt2').tree({
+                url: 'ashx/OrglistHandler.ashx',
+                onClick: function (node) {
+                    $(this).tree('toggle', node.id);
+                    databind(node.id);
+                    $('#cc').combotree('setValue', node.id);
+                },
+                onContextMenu: function (e, node) {
+                    e.preventDefault();
+                    $('#tt2').tree('select', node.target);
+                    $('#mm').menu('show', {
+                        left: e.pageX,
+                        top: e.pageY
+                    });
+                }
+            });
+            $('#tt').datagrid({
+                width: document.getElementById('div1').width,
+                height: document.getElementById('div1').heigh,
+                nowrap: false,
+                striped: true,
+                collapsible: true,
+                remoteSort: false,
+                singleSelect: true,
+                sortName: 'userid',
+                sortOrder: 'desc',
+                idField: 'id',
+                url: 'ashx/UsersHandler.ashx',
+                columns: [[
+                { field: 'id', title: 'id', width: $(this).width() * 0.04 },
+                { field: 'userid', title: '教师号', width: $(this).width() * 0.1 },
+                { field: 'logincount', title: '登录帐号', width: $(this).width() * 0.1 },
+                { field: 'username', title: '教师姓名', width: $(this).width() * 0.10 },
+                { field: 'password', title: '登陆口令', width: $(this).width() * 0.10 },
+                { field: 'orgid', title: '学院部门', width: $(this).width() * 0.1 },
+                { field: 'usertype', title: '用户类别', width: $(this).width() * 0.10 },
+                { field: 'status', title: '状态', width: $(this).width() * 0.10 }
+                ]],
+                onDblClickCell: function () {
+                    edit();
+                },
+                queryParams: { "action": "query" },
+                pagination: true, //是否开启分页
+                pageNumber: 1, //默认索引页
+                pageSize: 20, //默认一页数据条数
+                rownumbers: true //行号
+            });
+            $('#Role').combogrid({
+                panelWidth: 280,
+                multiple: true,
+                idField: 'Id',
+                textField: 'Name',
+                url: 'ashx/EditRoles.ashx?type=query',
+                columns: [[
+					{ checkbox: 'true' },
+					{ field: 'Name', title: '角色名称', width: 100 },
+                    { field: 'Remark', title: '角色说明', width: 130 }
+                ]]
+            });
+
+        });
+        //初始化搜索框
+        function InitSearch() {
+
+            $("#ipt_search").searchbox({
+                width: 200,
+                iconCls: 'icon-save',
+                searcher: function (val, name) {
+
+                    $('#tt').datagrid('options').queryParams.search_type = name;
+                    $('#tt').datagrid('options').queryParams.search_value = val;
+                    $('#tt').datagrid('reload');
+                    //alert("test search");
+                },
+                prompt: '请输入要查询的账号'
+            });
+        }
+        function close1() {
+            $('#dd').dialog('close');
+        }
+        function close2() {
+            $('#dd2').dialog('close');
+        }
+        function close4() {
+            $('#dd4').dialog('close');
+        }
+        function databind(orgId) {
+            $('#tt').datagrid('reload', { 'OrgId': orgId });
+        }
+
+        function edit() {
+
+            var node = $('#tt').datagrid('getSelected');
+            if (node) {
+                $('#hdId').val(node.Userid);
+                $.post('ashx/UsersHandler.ashx?type=edit&Id=' + node.教师号, function (msg) {
+                    var str = msg.split(',');
+
+                    $('#Role').combogrid('clear');
+
+                    for (var i = 0; i < str.length; i++) {
+                        $('#Role').combogrid('setValue', str[i]);
+                    }
+                    $('#Role').combogrid('setValue', msg);
+                });
+                $('#dd').dialog('open');
+            } else {
+                $.messager.alert('系统提示', '请选择要编辑的用户', 'error');
+            }
+        }
+        function del() {
+            var selected = $('#tt').datagrid('getSelected');
+            if (selected) {
+                $.messager.confirm('系统提示', '删除后不可恢复，您确定要删除吗?', function (r) {
+                    if (r) {
+                        $.post('ashx/UsersHandler.ashx?type=del&Id=' + selected.Userid, function (msg) {
+                            if (msg == 'true') {
+                                $.messager.alert('系统提示', '删除成功', 'info');
+                                databind(orgId);
+                            } else {
+                                $.messager.alert('系统提示', '删除失败，请稍后重试', 'info');
+                            }
+                        });
+                    }
+                });
+
+            } else {
+                $.messager.alert('系统提示', '请选择要删除的用户', 'error');
+            }
+        }
+        function Save() {
+
+            var Role = '';
+            var nodes = $('#Role').combogrid('getValues');
+            for (var i = 0; i < nodes.length; i++) {
+                if (Role != '')
+                    Role += ",";
+                Role += nodes[i];
+            }
+            if (Role != '') {
+                var userid = null;
+                var node = $('#tt').datagrid('getSelected');
+                if (node != null)
+                    userid = node.教师号;
+                $.post('ashx/UsersHandler.ashx?type=role&Userid=' + userid + '&role=' + Role, function (msg) {
+                    if (userid != null) {
+                        $.messager.alert('系统提示', '修改成功', 'info');
+                        $('#dd').dialog('close');
+                        $('#tt').datagrid('reload');
+                    } else {
+                        if (msg == 'false') {
+                            $.messager.alert('系统提示', '账号已存在，请重新输入账号', 'error');
+                            $('#txtLogin').val('');
+                        } else {
+                            $.messager.alert('系统提示', '添加成功', 'info');
+                            $('#dd').dialog('close');
+                            $('#tt').datagrid('reload');
+                        }
+                    }
+                });
+            } else {
+                $.messager.alert('系统提示', '请选用户角色', 'error');
+                return false;
+            }
+
+        }
+        function browse() {
+            var node = $('#tt').datagrid('getSelected');
+            if (node) {
+                $('#lblLogin').html(node.LoginName);
+                $('#lblPass').html(node.Pass);
+                $('#lblName').html(node.UserRealName);
+                $('#lblOrg').html(node.OrgId);
+                $('#lblMail').html(node.Mail);
+                $('#lblTel').html(node.Tel);
+                $('#lblMobile').html(node.Mobile);
+                if (node.Sex == '1') {
+                    $('#lblSex').html('男');
+                } else {
+                    $('#lblSex').html('女');
+                }
+                $('#lblStatus').html(node.Status);
+                $.post('ashx/UsersHandler.ashx?type=sel&Id=' + node.Userid, function (msg) {
+                    $('#lblRole').html(msg);
+                });
+                $('#dd3').dialog('open');
+            } else {
+                $.messager.alert('系统提示', '请选择要浏览的用户', 'error');
+            }
+        }
+        function Upd1() {
+            var node = $('#tt').datagrid('getSelected');
+            $('#newPass').val('');
+            if (node) {
+                $('#hdId').val(node.Userid);
+                $('#oldPass').val(node.Pass);
+                $('#dd2').dialog('open');
+            } else {
+                $.messager.alert('系统提示', '请选择要编辑的用户', 'error');
+            }
+        }
+        function Role1() {
+            var selected = $('#tt').datagrid('getSelected');
+            if (selected) {
+                $('#hdId').val(selected.Userid);
+                $('#tt3').tree({
+                    checkbox: true,
+                    url: 'ashx/treeHandler.ashx?Id=' + selected.Userid,
+                    onClick: function (node) {
+                        $(this).tree('toggle', node.target);
+                    },
+                    onContextMenu: function (e, node) {
+                        e.preventDefault();
+                        $('#tt3').tree('select', node.target);
+                        $('#mm').menu('show', {
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    }
+                });
+                $('#dd4').dialog('open');
+            } else {
+                $.messager.alert('系统提示', '请选择用户', 'error');
+            }
+        }
+        function saveRole() {
+            var nodes = $('#tt3').tree('getChecked');
+            var s = '';
+            for (var i = 0; i < nodes.length; i++) {
+                if (s != '') s += ',';
+                s += nodes[i].id;
+            }
+            var selected = $('#tt').datagrid('getSelected');
+            $.post('ashx/UsersHandler.ashx?type=role&UserId=' + selected.教师号 + '&roleId=' + s, function (msg) {
+                $.messager.alert('系统提示', '分配角色成功', 'info');
+                close4();
+            });
+        }
+        function savePass() {
+            var selected = $('#tt').datagrid('getSelected');
+            var pass = $('#newPass').val();
+            var pass2 = $('#newPass2').val();
+            if (pass == '') {
+                $.messager.alert('系统提示', '请输入新密码', 'error');
+            } else {
+                if (pass == pass2) {
+                    $.post('ashx/UsersHandler.ashx?type=pass&UserId=' + selected.教师号 + '&pass=' + pass, function (msg) {
+                        if (msg == "true") {
+                            $.messager.alert('系统提示', '密码修改成功,新密码为:' + pass, 'info');
+                            close2();
+                        } else {
+                            $.messager.alert('系统提示', '密码修改失败，请稍后重试', 'info');
+                            close2();
+                        }
+                    });
+                } else {
+                    $.messager.alert('系统提示', '两次输入密码不一致，请重新输入', 'error');
+                    $('#newPass2').val('');
+                    $('#newPass').val('');
+                }
+            }
+        }
+    </script>
+</head>
+<body style="background-color: White;">
+    <input id="hdId" type="hidden" />
+    <div style="height: 100%">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td width="204px" valign="top" height="100%">
+                    <table id="tableRole" cellpadding="0" cellspacing="1px" border="0" style="width: 200px;
+                        height: 100%;" bgcolor="b5d6e6">
+                        <tr style="height: 26px; background-color: #E0ECFF;">
+                            <td style="padding-left: 5px">
+                                <span class="icon icon-role" onclick="ss(this)">&nbsp;</span>组织机构
+                            </td>
+                        </tr>
+                        <tr style="background-color: white">
+                            <td valign="top" style="padding: 5px">
+                                <div id="content">
+                                    <ul id="tt2">
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td valign="top">
+                    <div class="btabs">
+                        <table width="100%">
+                            <tr>
+                                <td valign="top">
+                        <a href="javascript:void(0)" onclick="Upd1()"><span class="icon icon-Pass">&nbsp;</span>修改密码</a>
+ 
+                    <a href="javascript:void(0)" onclick="edit()" id="edit"><span class="icon icon-edit">&nbsp;</span>编辑</a>
+                                </td>
+                 <td style="text-align: right; padding-right: 15px">
+                      <input id="ipt_search" menu="#search_menu" />
+                    <div id="search_menu" style="width:120px">
+                        <div name="教师姓名">
+                            教师姓名</div>
+                        <div name="教师号">
+                            教师号</div>
+                    </div>
+
+                </td>
+                            </tr>
+
+
+                        </table>
+
+ 
+                    </div>
+                    <div style="height: 2px">
+                    </div>
+                    <div id="div1" style="width: 100%;">
+                        <table id="tt">
+                        </table>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <form action="ashx/UsersHandler.ashx?type=save" id="form1">
+    <div id="dd" icon="icon-save" style="padding: 5px; width: 360px; height: 160px;">
+        <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
+            
+             <tr style="background-color: White; height: 26px;">
+                <td align="center" colspan="2">
+                    选择分配角色</td>
+            </tr>
+           
+             <tr style="background-color: White; height: 26px;">
+                <td align="right">
+                    角色:&nbsp;&nbsp;
+                </td>
+                <td style="padding: 5px">
+                     <select id="Role" name="dept" style="width: 200px;"></select>*
+                </td>
+            </tr>
+           
+        </table>
+        <div region="south" border="false" style="text-align: center; height: 30px; line-height: 30px;">
+            <a id="A1" class="easyui-linkbutton" onclick="Save()" icon="icon-ok" href="javascript:void(0)">
+                确定</a> <a id="A2" class="easyui-linkbutton" onclick="close1()" icon="icon-cancel"
+                    href="javascript:void(0)">取消</a>
+        </div>
+    </div>
+    </form>
+ 
+    <div id="dd2" icon="icon-save" style="padding: 5px; width: 360px; height: 177px;">
+        <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
+            <tr style="background-color: White; height: 32px;">
+                <td align="right" style="width: 80px;">
+                    旧密码:&nbsp;&nbsp;
+                </td>
+                <td style="padding: 5px">
+                    <input id="oldPass" type="text" readonly="readonly" style="border: 1px solid #8DB2E3;
+                        width: 200px; height: 20px" />
+                </td>
+            </tr>
+            <tr style="background-color: White; height: 32px;">
+                <td align="right" style="width: 80px;">
+                    新密码:&nbsp;&nbsp;
+                </td>
+                <td style="padding: 5px">
+                    <input id="newPass" type="password" style="border: 1px solid #8DB2E3; width: 200px;
+                        height: 20px" />
+                </td>
+            </tr>
+            <tr style="background-color: White; height: 32px;">
+                <td align="right" style="width: 80px;">
+                    密码确认:&nbsp;&nbsp;
+                </td>
+                <td style="padding: 5px">
+                    <input id="newPass2" type="password" style="border: 1px solid #8DB2E3; width: 200px;
+                        height: 20px" />
+                </td>
+            </tr>
+        </table>
+        <div region="south" border="false" style="text-align: center; height: 30px; line-height: 30px;">
+            <a id="A3" class="easyui-linkbutton" onclick="savePass()" icon="icon-ok" href="javascript:void(0)">
+                确定</a> <a id="A4" class="easyui-linkbutton" onclick="close2()" icon="icon-cancel"
+                    href="javascript:void(0)">取消</a>
+        </div>
+    </div>
+   
+</body>
+</html>

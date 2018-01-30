@@ -1,0 +1,17 @@
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.dll.config
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.BLL.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.Common.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.DAL.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.Model.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.BLL.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.Common.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.DAL.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\kyfly.Model.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\obj\Release\kyfly.Web.csprojResolveAssemblyReference.cache
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\obj\Release\kyfly.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\obj\Release\kyfly.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\LitJSON.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\NPinyin.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Web\bin\NPinyin.pdb

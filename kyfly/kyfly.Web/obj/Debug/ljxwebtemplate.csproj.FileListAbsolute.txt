@@ -1,0 +1,5 @@
+F:\2016\project\crproject\crproject\bin\Debug\ljxwebtemplate\obj\Debug\ljxwebtemplate.csprojResolveAssemblyReference.cache
+F:\2016\project\crproject\crproject\bin\Debug\ljxwebtemplate\bin\ljxwebtemplate.dll
+F:\2016\project\crproject\crproject\bin\Debug\ljxwebtemplate\bin\ljxwebtemplate.pdb
+F:\2016\project\crproject\crproject\bin\Debug\ljxwebtemplate\obj\Debug\ljxwebtemplate.dll
+F:\2016\project\crproject\crproject\bin\Debug\ljxwebtemplate\obj\Debug\ljxwebtemplate.pdb

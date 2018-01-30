@@ -1,0 +1,5 @@
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Model\bin\Debug\kyfly.Model.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Model\bin\Debug\kyfly.Model.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Model\obj\Debug\kyfly.Model.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Model\obj\Debug\kyfly.Model.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.Model\obj\Debug\kyfly.Model.csprojResolveAssemblyReference.cache

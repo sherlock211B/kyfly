@@ -1,0 +1,12 @@
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\bin\Release\kyfly.DAL.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\bin\Release\kyfly.DAL.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\bin\Release\kyfly.Common.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\bin\Release\kyfly.Model.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\bin\Release\MySql.Data.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\bin\Release\kyfly.Common.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\bin\Release\kyfly.Model.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\obj\Release\kyfly.DAL.csprojResolveAssemblyReference.cache
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\obj\Release\kyfly.DAL.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\obj\Release\kyfly.DAL.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\bin\Release\NPinyin.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.DAL\bin\Release\NPinyin.pdb

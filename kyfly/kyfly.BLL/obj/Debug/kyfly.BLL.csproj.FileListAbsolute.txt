@@ -1,0 +1,14 @@
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\kyfly.BLL.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\kyfly.BLL.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\kyfly.Common.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\kyfly.DAL.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\kyfly.Model.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\MySql.Data.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\NPinyin.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\kyfly.Common.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\kyfly.DAL.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\kyfly.Model.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\bin\Debug\NPinyin.pdb
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\obj\Debug\kyfly.BLL.csprojResolveAssemblyReference.cache
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\obj\Debug\kyfly.BLL.dll
+D:\应用宝照片备份\Activation\C#学习二\主机\kyfly\kyfly\kyfly.BLL\obj\Debug\kyfly.BLL.pdb
